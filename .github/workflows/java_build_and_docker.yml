@@ -11,7 +11,7 @@ jobs:
    
     steps:
     - name: Checkout Repository
-    - uses: actions/checkout@v2 #Wasn't sure if I should use v2 or v3 as the slides say to use v3 but the example and another slide uses v2 and the manuel
+    - uses: actions/checkout@v2 
 
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
