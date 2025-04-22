@@ -30,7 +30,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        image: zh0nggg/demo-app:latest
+        image: zh0nggg/demo-app:${{ env.IMAGE_TAG }}
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
