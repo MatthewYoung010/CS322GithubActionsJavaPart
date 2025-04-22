@@ -24,8 +24,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build --info  # Added --info for more visibility
 
-    - name: Show contents of build/libs
-      run: ls -lh build/libs  # Ensure this lists the correct files
+    - name: Check build/libs directory
+      run: ls -lh ./build/libs  # Ensure the directory and JAR file are here
 
     - name: Set Docker Tag
       run: echo "IMAGE_TAG=latest-${GITHUB_REF##*/}-${GITHUB_SHA::7}" >> $GITHUB_ENV
@@ -38,4 +38,4 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        no-cache: true  # Optional, to avoid caching issues
+        context: .  # Ensure the context is the root of the repository
