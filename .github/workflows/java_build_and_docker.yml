@@ -29,11 +29,14 @@ jobs:
       
     - name: Set Docker Tag
       run: echo "IMAGE_TAG=latest-${GITHUB_REF##*/}-${GITHUB_SHA::7}" >> $GITHUB_ENV
-      
+
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        image: zh0nggg/demo-app:${{ env.IMAGE_TAG }}
+        image: zh0nggg/demo-app
+        tags: ${{ env.IMAGE_TAG }}
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+
